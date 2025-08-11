@@ -1,70 +1,136 @@
-# Getting Started with Create React App
+# Plant Disease Prediction Deployment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+This project is an end-to-end system for detecting plant diseases from leaf images using a hybrid approach of **Convolutional Neural Networks (CNN)**, **Local Binary Patterns (LBP)**, **Principal Component Analysis (PCA)**, and **Elephant Herding Optimization (EHO)** for feature selection.  
+It includes both the **backend API** (FastAPI) and the **frontend interface** (HTML/CSS/JavaScript) for user interaction.
 
-## Available Scripts
+Users can upload or capture a photo of a leaf, and the system will classify it as **Healthy** or **Unhealthy**, providing the prediction accuracy.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Features
+- **Image Upload**: Upload a leaf image for analysis.
+- **Camera Capture**: Take a live photo for instant prediction.
+- **CNN + LBP Feature Extraction**: Combines deep learning with texture features.
+- **PCA Dimensionality Reduction**: Reduces feature size while retaining critical information.
+- **EHO Feature Selection**: Optimizes selected features for classification.
+- **FastAPI Backend**: High-performance, scalable API for inference.
+- **Frontend Integration**: User-friendly interface served directly from the backend.
+- **Deployable on Render/Cloud**: Configured for cloud deployment.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Project Structure
+```
+Plant_Disease_Prediction_Deployment/
+│
+├── Backend/
+│   ├── main.py                  # FastAPI application
+│   ├── cnn_feature_extractor.h5 # Trained CNN feature extractor
+│   ├── model_cnn.h5              # Final trained classifier
+│   ├── pca.pkl                   # PCA transformation file
+│   ├── mask.npy                  # EHO-selected feature mask
+│   ├── cure_suggestions.py       # Diseases Cures (To be Implemented) 
+│   ├── start.sh                  # Startup script for deployment
+│   ├── requirements.txt              # Python dependencies
+│
+├── frontend/
+│   ├── index.html                # Home page
+│   ├── upload.html               # Upload/capture page
+│   ├── styles.css                # Styling
+│   ├── upload.js                 # Frontend JS logic
+│   ├── results.html              # Results Page
+│   ├── script.js                 # Backend JS logic
+│
+└── README.md                     # Project documentation
+```
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation & Setup
 
-### `npm run build`
+### 1. Clone the Repository
+```bash
+git clone https://github.com/<your-username>/Plant_Disease_Prediction_Deployment.git
+cd Plant_Disease_Prediction_Deployment
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2. Create a Virtual Environment
+```bash
+python -m venv venv
+source venv/bin/activate   # Mac/Linux
+venv\Scripts\activate      # Windows
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 3. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 4. Run Locally
+```bash
+cd Backend
+uvicorn main:app --reload
+```
+Access the app at:
+```
+https://plant-disease-prediction-deployment.onrender.com/
+```
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Deployment
+The project is configured for deployment on **Render**:
+- Backend is served via FastAPI.
+- Frontend static files are served from `/frontend` through FastAPI.
+- `start.sh` launches the server in production.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To deploy:
+1. Push your repository to GitHub.
+2. Create a new **Web Service** on Render.
+3. Connect the GitHub repo and set:
+   - Build Command: `pip install -r requirements.txt`
+   - Start Command: `bash start.sh`
+4. Deploy.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Model Training
+The model was trained using:
+- **CNN** for feature extraction.
+- **LBP** for texture analysis.
+- **PCA** for dimensionality reduction.
+- **EHO** for optimal feature selection.
+- **SMOTE** for class imbalance handling.
+- **Custom decision thresholding** to improve class precision.
 
-## Learn More
+Training is performed using the `cnn_eho_gpu_updated.py` script. The output model files are stored in `Backend/` for inference.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## API Endpoints
+### `POST /predict`
+**Request**:
+- `file`: Image file (JPG, PNG, etc.)
 
-### Code Splitting
+**Response**:
+```json
+{
+    "status": "Success",
+    "disease": "Healthy",
+    "accuracy": 95.23
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## Future Improvements
+- Support for multi-class disease classification.
+- Integration with a mobile application.
+- Dataset expansion for better generalization.
+- GPU-enabled cloud deployment.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+This project is licensed under the MIT License.
