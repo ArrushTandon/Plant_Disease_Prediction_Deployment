@@ -206,10 +206,10 @@ import tensorflow as tf
 import os
 
 # Paths
-FEATURE_EXTRACTOR_PATH = "Backend/cnn_feature_extractor.h5"
-CLASSIFIER_PATH = "Backend/model_cnn.h5"
-PCA_PATH = "Backend/pca.pkl"
-MASK_PATH = "Backend/mask.npy"
+FEATURE_EXTRACTOR_PATH = "cnn_feature_extractor.h5"
+CLASSIFIER_PATH = "model_cnn.h5"
+PCA_PATH = "pca.pkl"
+MASK_PATH = "mask.npy"
 
 # Load models
 feature_extractor = tf.keras.models.load_model(FEATURE_EXTRACTOR_PATH)
