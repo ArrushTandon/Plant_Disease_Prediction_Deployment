@@ -1,0 +1,134 @@
+@font-face {
+    font-family: 'PlaywriteAUNSW';
+    src: url('fonts/PlaywriteAUNSW-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'PlaywriteAUNSW', Arial, sans-serif;
+    color: #115205;
+    text-align: center;
+    background: 
+        linear-gradient(rgba(145, 151, 144, 0.7), rgba(144, 151, 144, 0.7)), 
+        url('images/Plants.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.navbar a {
+    color: #2e7d32;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+
+.container {
+    margin-top: 100px;
+    font-size: x-large;
+}
+
+form {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto; /* Centers the form horizontally */
+}
+
+.upload_heading h1 {
+    margin-top: 100px;   /* Distance from top of page */
+    margin-bottom: 30px; /* Space between heading and form */
+}
+
+.result-box {
+    margin: 80px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.85);
+    opacity: 1;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    width: 300px;
+}
+
+input[type="file"] {
+    margin-bottom: 15px;
+}
+
+button {
+    background: #2e7d32;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background: #1b5e20;
+}
+
+.upload-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.custom-upload-btn {
+    background: #00796b;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.custom-upload-btn:hover {
+    background: #004d40;
+}
+
+.predict-btn {
+    background: #2e7d32;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.predict-btn:hover {
+    background: #1b5e20;
+}
+
+#fileStatus {
+    font-size: 14px;
+    color: #444;
+    margin-top: 5px;
+}
+
+
