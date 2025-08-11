@@ -92,6 +92,7 @@ import pickle
 import cv2
 import tensorflow as tf
 from skimage.feature import local_binary_pattern
+import os
 
 # Paths
 FEATURE_EXTRACTOR_PATH = "cnn_feature_extractor.h5"
@@ -183,5 +184,10 @@ async def predict(file: UploadFile = File(...)):
             "error": str(e)
         }
 
+'''
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
+'''
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
