@@ -1,6 +1,6 @@
 fastapi==0.95.2
 uvicorn==0.22.0
-tensorflow==2.15.0
+tensorflow==2.13.0
 opencv-python==4.8.0.76
 scikit-image==0.21.0
 numpy==1.23.5
