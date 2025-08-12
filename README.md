@@ -74,7 +74,7 @@ uvicorn main:app --reload
 ```
 Access the app at:
 ```
-https://plant-disease-prediction-deployment.onrender.com/
+https://plant-disease-prediction-deployment.vercel.app/index.html
 ```
 
 ---
