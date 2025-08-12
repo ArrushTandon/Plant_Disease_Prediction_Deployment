@@ -79,8 +79,15 @@ function updateFileStatus(fileInput) {
     }
 }
 
-galleryInput.addEventListener("change", () => updateFileStatus(galleryInput));
-cameraInput.addEventListener("change", () => updateFileStatus(cameraInput));
+galleryInput.addEventListener("change", () => {
+    cameraInput.value = ""; // Clear camera file if gallery chosen
+    updateFileStatus(galleryInput);
+});
+
+cameraInput.addEventListener("change", () => {
+    galleryInput.value = ""; // Clear gallery file if camera chosen
+    updateFileStatus(cameraInput);
+});
 
 document.getElementById("uploadForm").addEventListener("submit", async function(event) {
     event.preventDefault();
@@ -96,7 +103,7 @@ document.getElementById("uploadForm").addEventListener("submit", async function(
     formData.append("file", fileInput);
 
     try {
-        const response = await fetch("/predict", {
+        const response = await fetch("https://plant-disease-prediction-deployment.onrender.com/predict", {
             method: "POST",
             body: formData
         });

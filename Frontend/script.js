@@ -11,7 +11,7 @@ document.getElementById("uploadForm").addEventListener("submit", async function(
     formData.append("file", fileInput.files[0]);
 
     try {
-        const response = await fetch("http://127.0.0.1:8000/predict", {
+        const response = await fetch("https://plant-disease-prediction-deployment.onrender.com/predict", {
             method: "POST",
             body: formData
         });

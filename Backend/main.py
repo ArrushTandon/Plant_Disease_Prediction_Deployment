@@ -196,8 +196,6 @@ if __name__ == "__main__":
 '''
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
 import uvicorn
 import numpy as np
 import pickle
@@ -226,18 +224,11 @@ IMG_SIZE = (128, 128)
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # Allow requests from frontend
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# Serve frontend
-app.mount("/static", StaticFiles(directory="frontend"), name="static")
-
-@app.get("/")
-def serve_home():
-    return FileResponse("frontend/index.html")
 
 def preprocess_image(image_bytes):
     """Preprocess uploaded image for prediction"""
@@ -287,4 +278,4 @@ async def predict(file: UploadFile = File(...)):
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
-    uvicorn.run("main:app", host="0.0.0.0", port=port, reload = False)
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=False)
