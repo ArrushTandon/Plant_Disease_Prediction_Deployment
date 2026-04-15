@@ -28,7 +28,7 @@ THRESHOLD_PATH = os.path.join(BASE_DIR, "threshold.npy")
 print("Loading CNN from:", FEATURE_EXTRACTOR_PATH) #Debug Files
 print("Exists?", os.path.exists(FEATURE_EXTRACTOR_PATH)) #Debug Files
 feature_extractor = tf.keras.models.load_model(FEATURE_EXTRACTOR_PATH, compile=False)
-classifier = tf.keras.models.load_model(CLASSIFIER_PATH, complie=False)
+classifier = tf.keras.models.load_model(CLASSIFIER_PATH, compile=False)
 threshold = np.load(THRESHOLD_PATH)
 
 # Load PCA & mask
