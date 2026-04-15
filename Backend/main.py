@@ -9,13 +9,24 @@ import tensorflow as tf
 import os
 
 # Paths
+'''
 FEATURE_EXTRACTOR_PATH = "cnn_feature_extractor.keras"
 CLASSIFIER_PATH = "model_cnn.keras"
 PCA_PATH = "pca.pkl"
 MASK_PATH = "mask.npy"
 THRESHOLD_PATH = "threshold.npy"
+'''
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+FEATURE_EXTRACTOR_PATH = os.path.join(BASE_DIR, "cnn_feature_extractor.keras")
+CLASSIFIER_PATH = os.path.join(BASE_DIR, "model_cnn.keras")
+PCA_PATH = os.path.join(BASE_DIR, "pca.pkl")
+MASK_PATH = os.path.join(BASE_DIR, "mask.npy")
+THRESHOLD_PATH = os.path.join(BASE_DIR, "threshold.npy")
 
 # Load models
+print("Loading CNN from:", FEATURE_EXTRACTOR_PATH) #Debug Files
+print("Exists?", os.path.exists(FEATURE_EXTRACTOR_PATH)) #Debug Files
 feature_extractor = tf.keras.models.load_model(FEATURE_EXTRACTOR_PATH)
 classifier = tf.keras.models.load_model(CLASSIFIER_PATH)
 threshold = np.load(THRESHOLD_PATH)
