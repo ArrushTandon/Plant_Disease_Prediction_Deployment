@@ -59,7 +59,9 @@ document.getElementById("uploadForm").addEventListener("submit", async function(
 
         localStorage.setItem("status", data.status);
         localStorage.setItem("disease", data.disease);
-        localStorage.setItem("accuracy", data.confidence);
+        localStorage.setItem("accuracy",
+            typeof data.confidence === "number" ? data.confidence : 0
+        );
         window.location.href = "results.html";
     } catch (err) {
         console.error("Upload failed", err);
