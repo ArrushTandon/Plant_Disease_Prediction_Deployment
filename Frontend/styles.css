@@ -7,10 +7,15 @@
 
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #d4fc79, #96e6a1);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('images/Plants.jpg') no-repeat center center fixed;
+
+    background-size: cover;
 }
 
 /* Navbar */
