@@ -130,17 +130,19 @@ async def predict(file: UploadFile = File(...)):
 
         # Predict
         proba = classifier.predict(selected_features, verbose=0)[0][0]
+        if proba < threshold:
+            disease = "Healthy"
+            confidence = (1 - proba) * 100
+        else:
+            disease = "Unhealthy"
+            confidence = proba * 100
 
-        confidence = abs(proba - threshold)
-
-        if confidence < 0.04:
-            disease = "Uncertain - please retake image"
+        if confidence < 60:
             status = "Low Confidence"
-        elif confidence < 0.10:
-            disease = "Uncertain - please retake image"
+            disease = "Uncertain"
+        elif confidence < 80:
             status = "Moderate Confidence"
         else:
-            disease = "Unhealthy" if proba > threshold else "Healthy"
             status = "High Confidence"
 
         confidence_score = proba * 100 if proba > threshold else (1 - proba) * 100
