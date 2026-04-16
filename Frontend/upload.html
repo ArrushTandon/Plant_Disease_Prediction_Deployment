@@ -12,46 +12,23 @@
         <a href="index.html" class="nav-home"> Home</a>
     </nav>
 
-  <div class="upload_heading">
-    <h1>Upload Your Leaf Image</h1>
-  </div>
-  <!--
+  <div class="container">
+    <h2>Upload Leaf Image</h2>
+
     <form id="uploadForm">
-        <input type="file" id="imageFile" accept="image/*" required>
+        <div class="upload-buttons">
+            <label for="galleryFile" class="custom-upload-btn">📁 Upload</label>
+            <input type="file" id="galleryFile" accept="image/*" hidden>
+
+            <label for="cameraFile" class="custom-upload-btn">📷 Camera</label>
+            <input type="file" id="cameraFile" accept="image/*" capture="environment" hidden>
+        </div>
+
+        <p id="fileStatus">No image selected</p>
+
         <button type="submit">Predict</button>
     </form>
-  -->
-  <!--
-    <form id="uploadForm">
-      <- Upload from gallery ->
-      <label for="galleryFile" class="custom-btn">Upload Image</label>
-      <input type="file" id="galleryFile" name="file" accept="image/*" style="display:none;">
-
-      <- Take photo with camera ->
-      <label for="cameraFile" class="custom-btn">Take Image</label>
-      <input type="file" id="cameraFile" name="file" accept="image/*" capture="environment" style="display:none;">
-
-      <button type="submit">Predict</button>
-    </form>
-  -->
-    <form id="uploadForm">
-      <div class="upload-buttons">
-          <!-- Upload from gallery -->
-          <label for="galleryFile" class="custom-upload-btn">Upload Image</label>
-          <input type="file" id="galleryFile" name="file" accept="image/*" style="display:none;">
-
-          <!-- Take photo with camera -->
-          <label for="cameraFile" class="custom-upload-btn">Take Image</label>
-          <input type="file" id="cameraFile" name="file" accept="image/*" capture="environment" style="display:none;">
-      </div>
-
-      <!-- Status text -->
-      <p id="fileStatus">No image selected</p>
-
-      <!-- Predict button -->
-      <button type="submit" class="predict-btn">Predict</button>
-    </form>
-
+</div>
     <script src="upload.js"></script>
 </body>
 </html>
