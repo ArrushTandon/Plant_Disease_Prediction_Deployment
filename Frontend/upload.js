@@ -31,6 +31,10 @@ document.getElementById("uploadForm").addEventListener("submit", async function(
 
     if (!fileInput) {
         alert("Please select or take a photo first!");
+
+        button.disabled = false;
+        button.textContent = "Predict";
+
         return;
     }
 
@@ -55,7 +59,7 @@ document.getElementById("uploadForm").addEventListener("submit", async function(
 
         localStorage.setItem("status", data.status);
         localStorage.setItem("disease", data.disease);
-        localStorage.setItem("accuracy", data.confidence);
+        localStorage.setItem("accuracy", data.confidence.toFixed(2));
         window.location.href = "results.html";
     } catch (err) {
         console.error("Upload failed", err);

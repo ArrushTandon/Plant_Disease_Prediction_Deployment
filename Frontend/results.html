@@ -23,10 +23,11 @@
 
 
     <script>
-        // Load results from localStorage
         document.getElementById("status").textContent = localStorage.getItem("status") || "-";
         document.getElementById("disease").textContent = localStorage.getItem("disease") || "-";
-        document.getElementById("accuracy").textContent = localStorage.getItem("accuracy") || "-";
+
+        const acc = localStorage.getItem("accuracy");
+        document.getElementById("accuracy").textContent = acc ? parseFloat(acc).toFixed(2) : "0.00";
     </script>
 </body>
 </html>
