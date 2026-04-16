@@ -21,7 +21,7 @@ document.getElementById("uploadForm").addEventListener("submit", async function(
         document.getElementById("status").textContent = data.status || "Error";
         document.getElementById("disease").textContent = data.disease || "-";
         document.getElementById("accuracy").textContent = 
-            data.accuracy !== "-" ? data.accuracy.toFixed(2) : "-";
+            data.confidence ? data.confidence.toFixed(2) : "-";
 
         document.getElementById("result").classList.remove("hidden");
     } catch (error) {
