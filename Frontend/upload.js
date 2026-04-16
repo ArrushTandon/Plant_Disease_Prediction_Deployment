@@ -69,7 +69,7 @@ document.getElementById("uploadForm").addEventListener("submit", async function(
             !isNaN(confidence) ? confidence : 0
         );
 
-        window.location.href = "results.html";
+        //window.location.href = "results.html";
     } catch (err) {
         console.error("Upload failed", err);
         button.disabled = false;
