@@ -55,7 +55,7 @@ document.getElementById("uploadForm").addEventListener("submit", async function(
         button.disabled = false;
         button.textContent = "Predict";
 
-        console.log(data);
+        console.log("FULL API RESPONSE:", data);
 
         localStorage.setItem("status", data.status);
         localStorage.setItem("disease", data.disease);
