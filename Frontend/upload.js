@@ -56,12 +56,19 @@ document.getElementById("uploadForm").addEventListener("submit", async function(
         button.textContent = "Predict";
 
         console.log("FULL API RESPONSE:", data);
+        // TEMPORARY DELAY
+        setTimeout(() => {
+            window.location.href = "results.html";
+        }, 5000);
 
         localStorage.setItem("status", data.status);
         localStorage.setItem("disease", data.disease);
+        const confidence = parseFloat(data.confidence);
+
         localStorage.setItem("accuracy",
-            typeof data.confidence === "number" ? data.confidence : 0
+            !isNaN(confidence) ? confidence : 0
         );
+
         window.location.href = "results.html";
     } catch (err) {
         console.error("Upload failed", err);
