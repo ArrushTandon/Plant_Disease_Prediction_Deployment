@@ -55,12 +55,13 @@ document.getElementById("uploadForm").addEventListener("submit", async function(
         button.disabled = false;
         button.textContent = "Predict";
 
-        console.log("FULL API RESPONSE:", data);
+        //console.log("FULL API RESPONSE:", data);
 
         localStorage.setItem("status", data.status);
         localStorage.setItem("disease", data.disease);
+        const confidence = parseFloat(data.score);
         localStorage.setItem("accuracy",
-            typeof data.score === "number" ? data.score : 0
+            !isNaN(confidence) ? confidence : 0
         );
 
         window.location.href = "results.html";
